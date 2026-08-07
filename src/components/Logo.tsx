@@ -1,0 +1,1 @@
+import{Link}from'react-router-dom';export default function Logo({linked=true}:{linked?:boolean}){const image=<img className="logo" src="/assets/logo-mente-original.png" alt="Logo M.E.N.T.E"/>;return linked?<Link to="/" className="logo-link" aria-label="M.E.N.T.E — página inicial">{image}</Link>:image}
