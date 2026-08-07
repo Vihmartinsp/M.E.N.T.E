@@ -1,0 +1,1 @@
+import Header from'../components/Header';import Hero from'../components/Hero';import{About,Features,How,FinalCallToAction,Footer}from'../components/HomeSections';export default function HomePage(){return <><a className="skip" href="#conteudo">Pular para o conteúdo</a><Header/><main id="conteudo"><Hero/><About/><Features/><How/><FinalCallToAction/></main><Footer/></>}

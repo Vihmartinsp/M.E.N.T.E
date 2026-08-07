@@ -1,25 +1,49 @@
-# MENTE
+# M.E.N.T.E — Matemática ENEM Traduzida e Explicada
 
-O **MENTE** é uma plataforma educacional desenvolvida como Trabalho de Conclusão de Curso do curso de Desenvolvimento de Sistemas. O projeto tem como objetivo ajudar estudantes do ensino médio a melhorar a interpretação e a resolução de questões de Matemática do ENEM.
+Protótipo educacional responsivo desenvolvido como TCC para tornar a Matemática do ENEM mais visual, guiada e acessível.
 
-A plataforma apresenta questões organizadas por níveis de dificuldade — fácil, médio e difícil — e oferece uma experiência de aprendizagem interativa, moderna e acessível tanto em computadores quanto em dispositivos móveis. Durante os estudos, os usuários podem acompanhar seu progresso, receber dicas e explicações, conquistar medalhas, avançar de nível e participar de um ranking.
+## Tecnologias
 
-O sistema também conta com recursos de gamificação, como recompensas, animações e efeitos sonoros, tornando a prática de Matemática mais dinâmica e motivadora. Além disso, o projeto prevê um painel administrativo para que professores possam gerenciar questões, conteúdos e informações da plataforma.
+React 19, TypeScript, Vite, React Router, CSS responsivo, Lucide, Vitest/Testing Library e Playwright.
 
-O MENTE utiliza **HTML, CSS e JavaScript** no front-end, **Node.js** no back-end e integração com banco de dados para armazenar usuários, questões, desempenho, progresso e conquistas.
+## Executar
 
-## Principais funcionalidades
+Requer Node.js 20 ou superior.
 
-* Cadastro e login de usuários;
-* Questões de Matemática baseadas no modelo do ENEM;
-* Níveis de dificuldade fácil, médio e difícil;
-* Dicas e explicações para auxiliar na interpretação;
-* Acompanhamento do progresso do estudante;
-* Sistema de pontos, medalhas e recompensas;
-* Ranking entre os participantes;
-* Animações e efeitos sonoros de acerto;
-* Interface responsiva para computador e celular;
-* Painel administrativo para gerenciamento da plataforma.
+```bash
+npm install
+npm run dev
+```
 
-O propósito do projeto é tornar o estudo da Matemática mais simples, envolvente e eficiente, ajudando os estudantes não apenas a encontrar respostas, mas também a compreender corretamente os enunciados e desenvolver o raciocínio necessário para resolver as questões.
+Acesse a URL exibida pelo Vite. Para configuração futura, copie `.env.example` para `.env` e informe a URL da API.
 
+## Qualidade e build
+
+```bash
+npm run lint
+npm test
+npm run build
+npx playwright install chromium
+npm run test:e2e
+npm run screenshots
+```
+
+As capturas são salvas em `screenshots/`.
+
+## Rotas
+
+- `/`: página inicial completa;
+- `/login` e `/login?tab=entrar`: acesso;
+- `/login?tab=cadastro` e `/cadastro`: criação de conta;
+- `/questoes`: tópicos públicos;
+- `/app`: estrutura inicial da área de estudos.
+
+## Arquitetura e autenticação
+
+A interface visual está separada em `src/components`, as páginas em `src/pages`, conteúdo estático em `src/data`, utilitários em `src/utils` e autenticação em `src/services/auth.ts`. O mock guarda apenas nome e e-mail na sessão do navegador; senhas nunca são persistidas. Para integrar o backend, implemente a interface `AuthService` com chamadas HTTPS e substitua a instância exportada, usando `VITE_API_URL` apenas como endereço público (segredos pertencem ao servidor).
+
+A interface referencia a logo oficial em `/assets/logo-mente-original.png`, mas o arquivo binário não faz parte deste repositório. Em cada ambiente de execução, disponibilize a imagem original em `public/assets/logo-mente-original.png`; a pasta é preservada por `public/assets/.gitkeep`. O navegador carrega essa referência sem filtros, cortes ou transformações de conteúdo.
+
+## Escopo atual
+
+Questões completas, simulados, videoaulas, ranking, recuperação de senha, persistência real e painel administrativo são evoluções futuras. O serviço de autenticação atual é exclusivamente demonstrativo.
